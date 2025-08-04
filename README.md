@@ -28,37 +28,7 @@ This project demonstrates a full CI/CD setup on Google Cloud using native servic
 - App1: Prints "Hello World App 1" on port 8080
 - App2: Prints "Hello World App 2" on port 8081
 
-## Architecture
 
-GitHub Push
-   |
-   v
-Cloud Build Trigger
-   |
-   |-- Build Docker images
-   |-- Push to Artifact Registry
-   |-- Create/Update Cloud Deploy pipeline
-   |-- Deploy to Dev cluster
-   |
-   v
-Manual Approval (for Prod)
-   |
-   v
-Deploy to Prod cluster
-
-## Directory Structure
-
-.
-├── app1/
-│   └── Dockerfile
-├── app2/
-│   └── Dockerfile
-├── deploy/
-│   ├── pipeline.yaml        # Defines Cloud Deploy pipeline
-│   ├── dev.yaml             # Target: Dev cluster
-│   ├── prod.yaml            # Target: Prod cluster
-│   └── app-release.yaml     # Manifest for both apps
-└── cloudbuild.yaml          # Build instructions
 
 ## GCP Services Used
 
@@ -67,25 +37,7 @@ Deploy to Prod cluster
 - Cloud Deploy (delivery pipeline and approval management)
 - Artifact Registry (stores Docker images)
 
-## Steps to Deploy
 
-1. Create two GKE clusters (dev and prod)
-2. Connect your GitHub repo to Cloud Build
-3. Enable required GCP APIs:
-   - Kubernetes Engine API
-   - Artifact Registry API
-   - Cloud Build API
-   - Cloud Deploy API
-4. Push your code to GitHub
-5. Monitor Cloud Build logs and Cloud Deploy pipeline
-6. Approve promotion to production via Cloud Deploy console
-
-## Required IAM Roles
-
-Ensure the Cloud Build service account has these roles:
-- roles/cloudbuild.builds.editor
-- roles/clouddeploy.admin
-- roles/container.developer
 
 ## Troubleshooting
 
