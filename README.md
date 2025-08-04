@@ -1,4 +1,4 @@
-# Devops_using_GCP
+
 # CI/CD Pipeline with Cloud Build & Cloud Deploy for GKE
 
 This project demonstrates a full CI/CD setup on Google Cloud using native services:
